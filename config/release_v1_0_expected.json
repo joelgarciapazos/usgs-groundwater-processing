@@ -1,0 +1,14 @@
+{
+  "dataset_release": "1.0",
+  "source_end_date": "2025-12-31",
+  "final_wells": 331,
+  "wells_interpolated": 323,
+  "wells_without_interpolation": 8,
+  "wells_excluded_after_reserved_validation": 3,
+  "source_values_retained": 2357801,
+  "interpolated_values_created": 16311,
+  "final_daily_values": 2374112,
+  "natural_gaps_interpolated": 3845,
+  "maximum_natural_gap_days": 30,
+  "note": "Reference values for auditing the published release. They are not general acceptance criteria."
+}

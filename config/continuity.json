@@ -1,0 +1,15 @@
+{
+  "min_years": 10,
+  "gap_scenarios_days": [15, 30, 45],
+  "pilot_gap_lengths_days": [1, 3, 7, 15, 30, 45],
+  "pilot_repetitions": 20,
+  "reserved_repetitions": 10,
+  "seed": 42,
+  "nonblocking_qualifiers": ["REVISED"],
+  "estimated_qualifiers": ["E", "ESTIMATED"],
+  "estimated_as_input": true,
+  "jump_flags": ["unusual_consecutive_day_change"],
+  "informational_flags": ["source_qualifier_present", "source_qualifier_needs_review", "source_estimated", "negative_depth_above_land_surface"],
+  "unknown_qualifier_policy": "barrier",
+  "other_review_flag_policy": "barrier"
+}

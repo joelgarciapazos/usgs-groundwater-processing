@@ -1,0 +1,13 @@
+{
+  "flag": "identical_value_duplicates_collapsed",
+  "flagged_dates": 0,
+  "flagged_wells": 0,
+  "flagged_dates_marked_unusable": 0,
+  "wells_with_flagged_unusable_dates": 0,
+  "flagged_dates_inside_selected_intervals": 0,
+  "selected_wells_with_flagged_dates": 0,
+  "flagged_unusable_dates_inside_selected_intervals": 0,
+  "selected_wells_with_flagged_unusable_dates": 0,
+  "examples": [],
+  "interpretation": "Read-only diagnostic. A nonzero count does not by itself imply an error; it identifies where the historical continuity policy treated this QA flag as a barrier."
+}

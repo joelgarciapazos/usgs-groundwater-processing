@@ -1,0 +1,11 @@
+{
+  "parameter_code": "72019",
+  "statistic_id": "00003",
+  "aquifer_codes_included": ["U"],
+  "estimated_policy": "flag",
+  "series_selection_csv": null,
+  "jump_min_pairs": 20,
+  "jump_mad_multiplier": 10.0,
+  "jump_floor_m": 1.0,
+  "well_depth_tolerance_m": 0.3048
+}

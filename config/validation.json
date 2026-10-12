@@ -1,0 +1,14 @@
+{
+  "gap_scenario_days": 30,
+  "min_years": 10,
+  "guard_days": 3,
+  "seed": 42,
+  "max_masks_per_length": 50,
+  "budget_sensitivity": [10, 20, 30, 50],
+  "budget_resamples": 100,
+  "max_interpolated_fraction": 0.10,
+  "rmse_threshold_m": 0.20,
+  "stability_tolerance_m": 0.02,
+  "method": "pchip",
+  "reserved_evaluated": false
+}

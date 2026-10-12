@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the software release and the associated dataset/article when available."
+title: "USGS Groundwater-Depth Dataset Processing Workflow"
+type: software
+authors:
+  - family-names: "García Pazos"
+    given-names: "Joel"
+  - family-names: "Martínez Cruz"
+    given-names: "Diego Armando"
+version: "1.0.0"
+license: MIT
+keywords:
+  - groundwater
+  - USGS
+  - NWIS
+  - temporal segmentation
+  - PCHIP
+  - quality control
