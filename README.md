@@ -71,4 +71,4 @@ The software is released under the MIT License. The scientific dataset is a sepa
 
 ## Citation
 
-`CITATION.cff` contains citation metadata for software Version 1.0.0. The definitive GitHub repository URL and archived software DOI will be added when the public repository and permanent software archive are created.
+`CITATION.cff` contains citation metadata for software Version 1.0.0. The canonical source repository is https://github.com/joelgarciapazos/usgs-groundwater-processing. The archived software DOI will be added after the v1.0.0 release is deposited in a permanent software archive.
