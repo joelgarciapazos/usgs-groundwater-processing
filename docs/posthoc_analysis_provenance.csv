@@ -1,0 +1,4 @@
+analysis_role,historical_source,public_file,sha256,status,note
+exploratory_pilot,09_piloto_interpolacion.py,analysis/compare_interpolation_methods.py,8b68a3ef98f3ea55dd7b19fc3f48e54b5d8d6adc889e251a5df04842fbbd2d49,v1.0.0 historical provenance,"Generates its own pilot masks; not manuscript Table A2."
+table_a2_generator,09_piloto_interpolacion.py v3.0.0 frozen-mask comparison,analysis/historical/09_piloto_interpolacion_v3_frozen_masks.py,15336f81a050abb07e20de5c7b367332bc132768669b1dfad50743d5ed931960,recovered exact generator,"Matches script_sha256 in the completed Table A2 analysis summary."
+table_a2_public_adapter,09_piloto_interpolacion.py v3.0.0 frozen-mask comparison,analysis/compare_interpolation_methods_frozen_masks.py,b92864750640a749da3633592eb42ccf46acf604d7a3f641053a95569722ff47,public-path adaptation,"Scientific logic unchanged; module import/path and usage text adapted for the reorganized repository."

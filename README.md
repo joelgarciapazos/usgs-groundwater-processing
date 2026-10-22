@@ -22,7 +22,7 @@ Run the scripts in `scripts/` in numerical order. The main stages are:
 10. `10_validate_reserved_data.py` — reserved validation on target years temporally separated from development.
 11. `11_interpolate_and_export.py` — PCHIP reconstruction of accepted natural gaps and final dataset export.
 
-`analysis/compare_interpolation_methods.py` is the historical exploratory linear/PCHIP/Akima pilot retained for provenance. It generates its own pilot masking windows and is not the post hoc paired comparison reported in the manuscript. The manuscript comparison used the exact frozen development masks (82,750 masks from 412 development segments) and did not open reserved data. Its preserved output summary and the remaining reproducibility requirements are documented in `docs/INTERPOLATION_METHOD_COMPARISON.md`. Do not use the exploratory pilot to reproduce manuscript Table A2.
+`analysis/compare_interpolation_methods.py` is the historical exploratory linear/PCHIP/Akima pilot retained for provenance. It generates its own pilot masking windows and is not the post hoc paired comparison reported in the manuscript. The actual historical generator used for manuscript Table A2 is preserved byte-equivalently (UTF-8/LF) as `analysis/historical/09_piloto_interpolacion_v3_frozen_masks.py`; its SHA-256 matches the hash recorded by the completed analysis. A public-path adaptation with unchanged scientific logic is provided as `analysis/compare_interpolation_methods_frozen_masks.py`. The manuscript comparison used the exact frozen development masks (82,750 masks from 412 development segments) and did not open reserved data. See `docs/INTERPOLATION_METHOD_COMPARISON.md`.
 
 ## Configuration
 

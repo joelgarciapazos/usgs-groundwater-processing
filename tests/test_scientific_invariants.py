@@ -322,3 +322,23 @@ def test_duplicate_barrier_auditor_uses_actual_prepared_stage_name():
     assert "01_preparacion" not in text
 
 
+
+
+def test_table_a2_historical_generator_hash_is_preserved():
+    """The recovered historical Table A2 generator must retain its recorded SHA-256."""
+    import hashlib
+    path = REPO / "analysis" / "historical" / "09_piloto_interpolacion_v3_frozen_masks.py"
+    digest = hashlib.sha256(path.read_bytes()).hexdigest()
+    assert digest == "15336f81a050abb07e20de5c7b367332bc132768669b1dfad50743d5ed931960"
+
+
+def test_table_a2_public_adapter_exposes_read_only_design():
+    """The public adapter should import and preserve the post hoc read-only protocol."""
+    path = REPO / "analysis" / "compare_interpolation_methods_frozen_masks.py"
+    spec = importlib.util.spec_from_file_location("table_a2_public_adapter", path)
+    mod = importlib.util.module_from_spec(spec)
+    assert spec.loader is not None
+    spec.loader.exec_module(mod)
+    assert mod.VERSION == "3.0.0"
+    assert mod.METHODS == ("linear", "pchip", "akima")
+    assert mod.PCHIP_TOL == 1e-12

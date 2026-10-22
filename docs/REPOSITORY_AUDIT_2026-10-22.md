@@ -26,4 +26,4 @@ The manuscript treats dataset DOI `10.5281/zenodo.23289430` as a reserved DOI fo
 
 The national historical-public equivalence result is documented, but the frozen experiment directories, shared national `03_libres` input tree, a generated full JSON equivalence report, and a repository-level input-tree checksum manifest are not distributed here.
 
-For the manuscript's post hoc interpolation comparison, the completed summary is now preserved, but the generator script and its frozen inputs matching the hashes in that summary are still required for an independent rerun.
+For the manuscript's post hoc interpolation comparison, the completed summary and the exact historical generator are now preserved. The recovered generator matches the recorded script SHA-256 exactly. The remaining missing material for an independent rerun is the set of four frozen input files/directories identified by hashes in `docs/INTERPOLATION_METHOD_COMPARISON.md`.

@@ -36,6 +36,25 @@ The summary also records SHA-256 hashes for all generated comparison outputs.
 
 ## Material still required for independent rerun
 
-The generator script matching the script hash above and the four frozen input files matching the recorded input hashes are not currently present in this GitHub repository. They are therefore still required before the manuscript comparison can be independently rerun from the repository.
+The historical generator has now been recovered and preserved as `analysis/historical/09_piloto_interpolacion_v3_frozen_masks.py`. After normalizing the supplied text to UTF-8 with LF line endings and a final newline, its SHA-256 is exactly:
 
-Until those files are supplied, no replacement implementation should be presented as the historical generator and the exploratory pilot should remain clearly labelled as a different analysis.
+`15336f81a050abb07e20de5c7b367332bc132768669b1dfad50743d5ed931960`
+
+This matches the `script_sha256` recorded by the completed analysis summary. The recovered file is therefore identified as the actual historical generator for manuscript Table A2.
+
+For convenient execution in the reorganized public repository, `analysis/compare_interpolation_methods_frozen_masks.py` is a minimal public-path adaptation. The scientific calculations and validation safeguards are unchanged; only the common-module import/path and usage text are adapted. Its SHA-256 is:
+
+`b92864750640a749da3633592eb42ccf46acf604d7a3f641053a95569722ff47`
+
+The exact historical generator is retained separately so the original recorded hash remains independently verifiable.
+
+## Remaining material required for an independent rerun
+
+The generator is no longer missing. The four frozen inputs identified by the completed summary are still not distributed in this repository:
+
+- audit summary: `12b5043b2f2f9b1bf2f5b8193490fe29bdc92839097dd9f269776a96a565e5f6`;
+- development summary: `a1f2649088deafffdebbaec950b52bc321444fea51dd6cc2715bc13d0179deb8`;
+- frozen development mask manifest: `5cc35f2d82a8cb34e413d70e1aac36e178b1b2d34b5d15a5f97089ff360d83d1`;
+- frozen PCHIP segment-length metrics: `1ce3e7da0baef6adfaa334ca0abe89b6961e54d64dae36cee89d68808f27f49f`.
+
+Until those frozen inputs are supplied or archived with documented locations, Table A2 cannot be independently regenerated from the GitHub checkout alone.
