@@ -1,13 +1,13 @@
 # Public adaptation notes
 
-The public candidate was prepared from the frozen research scripts that produced the final dataset. The objective is to make the workflow understandable and portable without rewriting the scientific method.
+The public `v1.0.0` adaptation was prepared from the frozen research scripts that produced the final dataset. The objective is to make the workflow understandable and portable without rewriting the scientific method.
 
 ## Deliberate changes
 
 - Replaced user-specific absolute default paths with repository-relative defaults and environment-variable/CLI overrides.
 - Renamed the public scripts in numerical workflow order and updated only the import/hash references required by those names.
 - Added concise English module documentation for the public entry points. Internal field names and output-stage directory names are retained where changing them would increase the risk of altering provenance logic.
-- Moved the linear/PCHIP/Akima pilot comparison to an optional `analysis/` entry point.
+- Moved the historical linear/PCHIP/Akima pilot comparison to an optional `analysis/` entry point. This pilot generates its own masks and is distinct from the later post hoc paired comparison on the exact frozen development masks reported in the manuscript; see `INTERPOLATION_METHOD_COMPARISON.md`.
 - Integrated the administrative summary-closing fixes from the historical `17b_cerrar_reserva.py` and `18c_cerrar_dataset_final.py` directly into public stages 10 and 11. Those fixes address duplicate-key construction of final JSON summaries and do not recalculate PCHIP, reopen reserved values, change selections, or alter final series.
 - Kept the frozen study configuration values in JSON files and now reject changes to the final validation settings (30-day scenario, 10-year minimum, 3+3 artificial-mask support, 50 development masks, 20 reserved masks, PCHIP, RMSE 0.20 m, and 10% maximum interpolation fraction where applicable). Published-release counts are separated into `release_v1_0_expected.json` and are documented as audit references rather than general scientific thresholds.
 - Removed the remaining release-specific `excluded_after_reserve=3` constant from the general exporter; the exporter now derives this count from the actual reserve result.
@@ -21,7 +21,11 @@ The diagnostic/exploratory scripts `05_revisar_resultados.py`, `06_auditar_marca
 
 ## Validation status of this adaptation
 
-All Python files in this candidate have been syntax-compiled and all JSON files parsed successfully. The repository test suite includes both smoke checks and scientific-invariant tests, including a complete synthetic final-export case with zero accepted wells and a synthetic natural-gap reconstruction that verifies exact preservation of source values without imposing the artificial-mask 3+3 rule on the natural gap. This environment does not contain the original full USGS raw/QA directory tree, so the adapted workflow has not yet been rerun end-to-end over the frozen national inputs. Before public release, the next required step is a reduced historical-versus-public equivalence test on frozen inputs, followed by a broader equivalence audit.
+The public adaptation was subsequently exercised in a national historical-versus-public equivalence test from the same frozen post-QA unconfined-well input (`03_libres`). Historical experiment `exp_4acf1c339756ad60` and public experiment `exp_3679d6823ee4a316` were compared with `audit/compare_historical_public.py` at an absolute numerical tolerance of `1e-12`. The comparison passed for the scientific segment, mask, metric, selection, reserve, gap, metadata, exclusion, and complete final daily-data products, including all 2,374,112 final rows.
+
+This completed test supersedes the earlier note that equivalence testing was still pending. It establishes scientific equivalence from the shared frozen post-QA starting point. It does **not** represent an independent reproduction of stages 01–04 from a fresh USGS API retrieval. The frozen national input directory and the generated full JSON equivalence report are not currently distributed in this repository; their availability and the exact rerun command are documented in `REPRODUCIBILITY_TEST.md`.
+
+The repository test suite also includes smoke checks and scientific-invariant tests, including a complete synthetic final-export case with zero accepted wells and a synthetic natural-gap reconstruction that verifies exact preservation of source values without imposing the artificial-mask 3+3 rule on the natural gap.
 
 ## Release-specific count checks
 

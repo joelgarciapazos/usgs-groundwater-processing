@@ -1,0 +1,48 @@
+{
+  "etapa_completa": true,
+  "finalizado_utc": "2026-10-21T05:05:35.978437+00:00",
+  "version": "3.0.0",
+  "analysis_type": "READ_ONLY_PAIRED_INTERPOLATION_METHOD_COMPARISON",
+  "methods": [
+    "linear",
+    "pchip",
+    "akima"
+  ],
+  "development_only": true,
+  "reserved_evaluated": false,
+  "changes_dataset_membership": false,
+  "changes_production_method": false,
+  "audit_summary_sha256": "12b5043b2f2f9b1bf2f5b8193490fe29bdc92839097dd9f269776a96a565e5f6",
+  "development_summary_sha256": "a1f2649088deafffdebbaec950b52bc321444fea51dd6cc2715bc13d0179deb8",
+  "development_masks_sha256": "5cc35f2d82a8cb34e413d70e1aac36e178b1b2d34b5d15a5f97089ff360d83d1",
+  "frozen_pchip_metrics_sha256": "1ce3e7da0baef6adfaa334ca0abe89b6961e54d64dae36cee89d68808f27f49f",
+  "script_sha256": "15336f81a050abb07e20de5c7b367332bc132768669b1dfad50743d5ed931960",
+  "python": "3.10.12",
+  "numpy": "2.2.6",
+  "scipy": "1.15.3",
+  "interpretation": "Descriptive paired comparison on the exact frozen development masks. No reserved data are opened and Version 1.0 membership is unchanged.",
+  "n_segments_compared": 412,
+  "n_unique_masks_compared": 82750,
+  "n_method_mask_evaluations": 248250,
+  "paired_complete": true,
+  "pchip_reconciliation": {
+    "n_segment_length_units": 1655,
+    "tolerance": 1e-12,
+    "max_abs_delta_rmse_m": 0.0,
+    "max_abs_delta_mae_m": 0.0,
+    "max_abs_delta_bias_m": 0.0,
+    "reconciled": true
+  },
+  "output_hashes": {
+    "metricas_mascara_metodo.csv": "70ba87a8d8989684d46cc759ebb04a43ea23d3e3ea0daf65f274a0e9fc3a3934",
+    "metricas_segmento_longitud_metodo.csv": "c4120c4e660ba4316ca69e528c441e72f88f5ba56cc958da8308af3bb99bd090",
+    "resumen_metodo_longitud.csv": "cd99eaffd9f9d57ab22774db1789bbdcc7a4e0231a1bb6dbbe8cb4c178d344e5",
+    "resumen_metodo_longitudes_ancla.csv": "6d67f9141192d08979eb0f94b4d9c9f324753969624f9bbe7423be50460ecef4",
+    "resumen_metodos_global.csv": "bfbd3aac1c618d77a86c604c0604cc5f6335534bcce812042d67cd0d281ba077",
+    "comparacion_pareada_vs_lineal.csv": "fffcf7198b86e340a150f18877331da20f4f51039ce8248be7c2bc21221fe637",
+    "resumen_pareado_vs_lineal.csv": "bcb5c3ec21d13240ed28ca78fdec9862afb63dc9ba8e0e1b12da7b2729f90248",
+    "tabla_comparacion_metodos_manuscrito.csv": "07aeb90fa41a3f12aa5b1af19148ca2c8dd7c78682da8e2c3fef2f14d4ab6ddb",
+    "reconciliacion_pchip.json": "0cf7565981eabee385904d33d347dca6a25e315deee68577bb1b2d32d7f223ed"
+  },
+  "note": "Comparación descriptiva post hoc sobre desarrollo únicamente. No abre reserva, no rellena huecos reales y no altera Version 1.0."
+}

@@ -19,10 +19,10 @@ Run the scripts in `scripts/` in numerical order. The main stages are:
 7. `07_build_development_masks.py` — rebuild all eligible 30-day segments and freeze development masking windows.
 8. `08_validate_development.py` — PCHIP development validation and masking-budget sensitivity.
 9. `09_select_and_freeze_reserve.py` — select one segment per well and freeze reserved windows.
-10. `10_validate_reserved_data.py` — independent reserved validation.
+10. `10_validate_reserved_data.py` — reserved validation on target years temporally separated from development.
 11. `11_interpolate_and_export.py` — PCHIP reconstruction of accepted natural gaps and final dataset export.
 
-`analysis/compare_interpolation_methods.py` is optional and supports the exploratory comparison of linear, PCHIP, and Akima interpolation. It is not required to regenerate the frozen final dataset once PCHIP and the 30-day scenario are fixed.
+`analysis/compare_interpolation_methods.py` is the historical exploratory linear/PCHIP/Akima pilot retained for provenance. It generates its own pilot masking windows and is not the post hoc paired comparison reported in the manuscript. The manuscript comparison used the exact frozen development masks (82,750 masks from 412 development segments) and did not open reserved data. Its preserved output summary and the remaining reproducibility requirements are documented in `docs/INTERPOLATION_METHOD_COMPARISON.md`. Do not use the exploratory pilot to reproduce manuscript Table A2.
 
 ## Configuration
 
@@ -53,15 +53,15 @@ The downloader and initial QA utilities use only the Python standard library. Th
 
 This repository is a public adaptation of the research scripts, not a byte-identical copy of the historical source files. Changes are intentionally limited to portable paths, public filenames/documentation, import references required by those filename changes, explicit validation of the frozen configuration and provenance chain, robust handling of non-applicable/empty reduced-run summaries, and integration of the administrative close fixes previously performed by `17b_cerrar_reserva.py` and `18c_cerrar_dataset_final.py`. These changes are intended not to alter the scientific criteria or numerical methods. See `docs/provenance_mapping.csv` and `docs/PUBLIC_ADAPTATION.md`. Release-specific expected counts are verified separately with `audit/verify_release_v1.py`.
 
-Because USGS can revise historical records, rerunning the API workflow at a later date may not reproduce byte-identical source data unless the original raw API responses are also preserved. The Version 1.0 dataset package associated with manuscript review is therefore treated as a frozen data release candidate; its final repository citation/DOI should be inserted when the public release is registered.
+Because USGS can revise historical records, rerunning the API workflow at a later date may not reproduce byte-identical source data unless the original raw API responses are also preserved. The associated scientific dataset is a separate Zenodo product. The manuscript identifies dataset Version 1.0 as an unpublished peer-review draft with reserved DOI `10.5281/zenodo.23289430`; this repository does not describe that DOI as a published dataset record.
 
 ## Status
 
-This repository candidate has completed a national historical-versus-public scientific-equivalence test using the same frozen post-QA input. The automated test suite includes scientific invariants for the frozen validation protocol, provenance checks, reduced-run edge cases, source-value preservation, and natural-gap reconstruction. The full historical-public comparison, including the 2,374,112-row final daily dataset, returned `SCIENTIFIC EQUIVALENCE: PASS` with an absolute numerical tolerance of `1e-12`. Release-specific expected counts remain separate from scientific acceptance criteria.
+The tagged software release `v1.0.0` completed a national historical-versus-public scientific-equivalence test using the same frozen post-QA input (`03_libres`). The automated test suite includes scientific invariants for the frozen validation protocol, provenance checks, reduced-run edge cases, source-value preservation, and natural-gap reconstruction. The full historical-public comparison, including the 2,374,112-row final daily dataset, returned `SCIENTIFIC EQUIVALENCE: PASS` with an absolute numerical tolerance of `1e-12`. This establishes equivalence from the shared post-QA starting point; it is not an independent reproduction of acquisition, normalization, QA, or aquifer selection from a new USGS retrieval. Release-specific expected counts remain separate from scientific acceptance criteria.
 
 ## Scientific-equivalence audit
 
-A national equivalence audit was completed with `audit/compare_historical_public.py` using the same frozen post-QA input as the historical workflow. The comparison covers scientific segment, mask, metric, selection, reserve, gap, metadata, exclusion, and final daily-data outputs while ignoring implementation-only paths, timestamps, run identifiers, and hashes. All compared products passed. See `docs/REPRODUCIBILITY_TEST.md`.
+A national equivalence audit was completed with `audit/compare_historical_public.py` using the same frozen post-QA input as the historical workflow. The comparison covers scientific segment, mask, metric, selection, reserve, gap, metadata, exclusion, and final daily-data outputs while ignoring implementation-only paths, timestamps, run identifiers, and hashes. All compared products passed. The exact command, available evidence, and missing frozen inputs/report files are documented in `docs/REPRODUCIBILITY_TEST.md`.
 
 A separate read-only diagnostic, `audit/check_duplicate_barrier_impact.py`, quantifies whether the historical `identical_value_duplicates_collapsed` QA flag became a continuity barrier and whether affected dates occur in selected final intervals. This diagnostic does not alter the frozen policy.
 
@@ -71,4 +71,4 @@ The software is released under the MIT License. The scientific dataset is a sepa
 
 ## Citation
 
-`CITATION.cff` contains citation metadata for software Version 1.0.0. The canonical source repository is https://github.com/joelgarciapazos/usgs-groundwater-processing. The archived software DOI will be added after the v1.0.0 release is deposited in a permanent software archive.
+`CITATION.cff` contains citation metadata for software Version 1.0.0. For the manuscript, cite the frozen GitHub release at https://github.com/joelgarciapazos/usgs-groundwater-processing/releases/tag/v1.0.0. The canonical source repository is https://github.com/joelgarciapazos/usgs-groundwater-processing. The software and the Zenodo scientific dataset are separate products; no separate software DOI is currently assigned.

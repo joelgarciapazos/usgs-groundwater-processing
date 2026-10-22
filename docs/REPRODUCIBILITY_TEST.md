@@ -22,7 +22,7 @@ The comparison covers:
 - reconstruction of natural internal gaps;
 - final dataset export.
 
-This test does not represent a new download from USGS NWIS or an independent rerun of acquisition, normalization, and QA stages 01-04.
+This test does not represent a new download from USGS NWIS or an independent rerun of acquisition, normalization, QA, and aquifer-selection stages 01–04. Development and reserved targets are temporally separated within the same monitoring records and should not be interpreted as statistically independent groundwater observations.
 
 ## Frozen protocol
 
@@ -91,6 +91,39 @@ Final result:
 `SCIENTIFIC EQUIVALENCE: PASS`
 
 The row-level comparison covered all 2,374,112 exported daily records.
+
+## Re-running the equivalence comparison
+
+The auditor compares two already-generated experiment directories. With the frozen historical and public experiments available locally, run:
+
+```bash
+python audit/compare_historical_public.py \
+  /path/to/exp_4acf1c339756ad60 \
+  /path/to/exp_3679d6823ee4a316 \
+  --atol 1e-12 \
+  --report /path/to/equivalence_report.json
+```
+
+The two experiment directories must retain their stage pointer files and the scientific outputs listed by the auditor. To regenerate the public experiment itself rather than only compare two existing runs, the same frozen post-QA input directory (`03_libres`) used by the historical run is also required.
+
+## Evidence availability
+
+The following evidence is present in the public repository:
+
+- `audit/compare_historical_public.py`, the read-only comparison code;
+- this document, which records the historical/public experiment identifiers, counts, tolerance, and PASS result;
+- `docs/duplicate_barrier_diagnostic.json`, the preserved duplicate-barrier diagnostic;
+- `docs/provenance_mapping.csv`, which maps historical scripts to the public `v1.0.0` scripts and their SHA-256 hashes.
+
+The following items required for a third party to rerun the national equivalence audit are **not currently distributed in the repository**:
+
+- the frozen historical experiment directory `exp_4acf1c339756ad60`;
+- the public reproduction directory `exp_3679d6823ee4a316`;
+- the shared frozen post-QA `03_libres` input tree used to generate those experiments;
+- a committed copy of the generated per-table JSON report from `--report`;
+- a repository-level manifest giving independent SHA-256 identifiers for the frozen national input tree.
+
+Therefore the repository documents and tests the comparison logic and records the completed result, but the full national equivalence audit cannot be independently rerun from the GitHub checkout alone until those frozen inputs/evidence files are made available.
 
 ## Additional diagnostic and regression tests
 

@@ -322,19 +322,3 @@ def test_duplicate_barrier_auditor_uses_actual_prepared_stage_name():
     assert "01_preparacion" not in text
 
 
-def test_development_stage_exposes_frozen_relevant_lengths():
-    """Regression test for the stage-08 helper required by the real workflow."""
-    assert M08.relevant_lengths(0) == []
-    assert M08.relevant_lengths(1) == [1]
-    assert M08.relevant_lengths(8) == [1, 3, 7, 8]
-    assert M08.relevant_lengths(30) == [1, 3, 7, 15, 30]
-    with pytest.raises(ValueError):
-        M08.relevant_lengths(31)
-
-
-def test_duplicate_barrier_auditor_uses_actual_prepared_stage_name():
-    """Regression test for the historical 01_preparados directory name."""
-    auditor = REPO / "audit" / "check_duplicate_barrier_impact.py"
-    text = auditor.read_text(encoding="utf-8")
-    assert "01_preparados" in text
-    assert "01_preparacion" not in text

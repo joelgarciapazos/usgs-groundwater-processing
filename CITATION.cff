@@ -8,7 +8,9 @@ authors:
   - family-names: "Martínez Cruz"
     given-names: "Diego Armando"
 version: "1.0.0"
+date-released: "2026-10-12"
 repository-code: "https://github.com/joelgarciapazos/usgs-groundwater-processing"
+url: "https://github.com/joelgarciapazos/usgs-groundwater-processing/releases/tag/v1.0.0"
 license: MIT
 keywords:
   - groundwater
