@@ -3,11 +3,13 @@ message: "If you use this software, please cite the software release and the ass
 title: "USGS Groundwater-Depth Dataset Processing Workflow"
 type: software
 authors:
-  - family-names: "García Pazos"
+  - family-names: "García-Pazos"
     given-names: "Joel"
-  - family-names: "Martínez Cruz"
+  - family-names: "Martínez-Cruz"
     given-names: "Diego Armando"
 version: "1.0.0"
+doi: "10.5281/zenodo.23584786"
+date-released: "2026-10-12"
 repository-code: "https://github.com/joelgarciapazos/usgs-groundwater-processing"
 license: MIT
 keywords:
