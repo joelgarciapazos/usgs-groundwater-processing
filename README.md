@@ -53,7 +53,7 @@ The downloader and initial QA utilities use only the Python standard library. Th
 
 This repository is a public adaptation of the research scripts, not a byte-identical copy of the historical source files. Changes are intentionally limited to portable paths, public filenames/documentation, import references required by those filename changes, explicit validation of the frozen configuration and provenance chain, robust handling of non-applicable/empty reduced-run summaries, and integration of the administrative close fixes previously performed by `17b_cerrar_reserva.py` and `18c_cerrar_dataset_final.py`. These changes are intended not to alter the scientific criteria or numerical methods. See `docs/provenance_mapping.csv` and `docs/PUBLIC_ADAPTATION.md`. Release-specific expected counts are verified separately with `audit/verify_release_v1.py`.
 
-Because USGS can revise historical records, rerunning the API workflow at a later date may not reproduce byte-identical source data unless the original raw API responses are also preserved. The Version 1.0 dataset package associated with manuscript review is therefore treated as a frozen data release candidate; its final repository citation/DOI should be inserted when the public release is registered.
+Because USGS can revise historical records, rerunning the API workflow at a later date may not reproduce byte-identical source data unless the original raw API responses are also preserved. The frozen Version 1.0 scientific dataset associated with this software is archived separately on Zenodo ([DOI: 10.5281/zenodo.23289430](https://doi.org/10.5281/zenodo.23289430)) and is not distributed as part of this repository.
 
 ## Status
 
@@ -71,4 +71,8 @@ The software is released under the MIT License. The scientific dataset is a sepa
 
 ## Citation
 
-`CITATION.cff` contains citation metadata for software Version 1.0.0. The canonical source repository is https://github.com/joelgarciapazos/usgs-groundwater-processing. The archived software DOI will be added after the v1.0.0 release is deposited in a permanent software archive.
+`CITATION.cff` contains citation metadata for software Version 1.0.0. The canonical source repository is https://github.com/joelgarciapazos/usgs-groundwater-processing. The frozen software release is archived on Zenodo with a [version-specific DOI (10.5281/zenodo.23584786)](https://doi.org/10.5281/zenodo.23584786). The [concept DOI (10.5281/zenodo.23584785)](https://doi.org/10.5281/zenodo.23584785) resolves to the latest software version; cite the version-specific DOI to identify v1.0.0.
+
+> García-Pazos, J. and Martínez-Cruz, D. A. (2026). *USGS Groundwater-Depth Dataset Processing Workflow* (Version v1.0.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.23584786
+
+The associated scientific dataset is a separate research output ([DOI: 10.5281/zenodo.23289430](https://doi.org/10.5281/zenodo.23289430)).
