@@ -80,3 +80,24 @@ The original development directory must also provide:
 The recovered `manifiesto_ventanas_desarrollo.csv`, `metricas_segmento_longitud.csv`, and both summaries should remain with their original audit/development directories. The cleanest reproducibility package is therefore the complete frozen `auditoria_*` and `desarrollo_*` directories rather than a loose collection of individual files.
 
 Table A2 cannot yet be independently regenerated from the GitHub checkout alone until those complete frozen directories, or an equivalent archived bundle preserving their hashes and paths, are made available.
+
+
+## Verification of the recovered input directories
+
+The recovered historical directories were inspected on 2026-10-22.
+
+`auditoria_89ebe419e70c` contains 428 files totaling 147,103,879 uncompressed bytes. This is also the minimal audit dependency set for the exact Table A2 generator: the seven top-level audit products plus all 421 frozen segment files. Every top-level output hash, every `segment_sha256_v2`, and all 421 entries in `segment_files_hash_manifest` were verified successfully.
+
+`desarrollo_a9c13d1d8314` contains 1,269 files totaling 41,935,873 uncompressed bytes. The Table A2 generator does not read the per-segment checkpoint/prediction directories. Its minimal development dependency set is the six top-level files `resumen.json`, `estado_segmentos.csv`, `metricas_segmento_longitud.csv`, `sensibilidad_presupuesto.csv`, `resumen_sensibilidad_presupuesto.csv`, and `errores.csv`, totaling 1,584,718 bytes. All hashes recorded in the development summary were verified.
+
+Use the repository verifier before running the comparison:
+
+```bash
+python audit/verify_table_a2_inputs.py \
+  --auditoria /path/to/auditoria_89ebe419e70c \
+  --desarrollo /path/to/desarrollo_a9c13d1d8314
+```
+
+A full scientific rerun was also performed from the recovered directories with the historical Table A2 generator. It completed all 412 development segments with zero errors, compared 82,750 unique masks (248,250 method-mask evaluations), and reconciled PCHIP with the frozen development metrics within `1e-12`.
+
+The verification environment available for that rerun was Python 3.13.5, NumPy 2.3.5, and SciPy 1.17.0, rather than the frozen Python 3.10.12 / NumPy 2.2.6 / SciPy 1.15.3 environment. Consequently, generated CSV files were not byte-identical to the historical output hashes, although the scientific Table A2 values reproduced at the reported precision and the maximum PCHIP reconciliation differences were below `7e-16`. The repository already pins NumPy 2.2.6 and SciPy 1.15.3 in `requirements.txt` and uses Python 3.10 in GitHub Actions; exact historical output-hash reproduction should therefore be assessed only in that frozen numerical environment.
