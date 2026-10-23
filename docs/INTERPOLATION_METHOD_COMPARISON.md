@@ -48,13 +48,35 @@ For convenient execution in the reorganized public repository, `analysis/compare
 
 The exact historical generator is retained separately so the original recorded hash remains independently verifiable.
 
-## Remaining material required for an independent rerun
+## Recovered frozen inputs and remaining dependencies
 
-The generator is no longer missing. The four frozen inputs identified by the completed summary are still not distributed in this repository:
+The four central frozen files identified in the completed Table A2 summary have now been recovered and independently SHA-256 verified:
 
-- audit summary: `12b5043b2f2f9b1bf2f5b8193490fe29bdc92839097dd9f269776a96a565e5f6`;
-- development summary: `a1f2649088deafffdebbaec950b52bc321444fea51dd6cc2715bc13d0179deb8`;
-- frozen development mask manifest: `5cc35f2d82a8cb34e413d70e1aac36e178b1b2d34b5d15a5f97089ff360d83d1`;
-- frozen PCHIP segment-length metrics: `1ce3e7da0baef6adfaa334ca0abe89b6961e54d64dae36cee89d68808f27f49f`.
+- audit `resumen.json`: `12b5043b2f2f9b1bf2f5b8193490fe29bdc92839097dd9f269776a96a565e5f6`;
+- development `resumen.json`: `a1f2649088deafffdebbaec950b52bc321444fea51dd6cc2715bc13d0179deb8`;
+- `manifiesto_ventanas_desarrollo.csv`: `5cc35f2d82a8cb34e413d70e1aac36e178b1b2d34b5d15a5f97089ff360d83d1`;
+- `metricas_segmento_longitud.csv`: `1ce3e7da0baef6adfaa334ca0abe89b6961e54d64dae36cee89d68808f27f49f`.
 
-Until those frozen inputs are supplied or archived with documented locations, Table A2 cannot be independently regenerated from the GitHub checkout alone.
+The recovered development-mask manifest contains 82,750 masks, matching both the audit summary and the completed Table A2 analysis. The recovered frozen PCHIP metrics file contains 1,655 segment-length rows, matching the development summary.
+
+These four files are necessary but are not the complete input tree required by the exact historical generator. The script validates every file listed in the audit and development summaries before running, and it reads the frozen segment files referenced by `segmentos_elegibles_30d.csv`.
+
+For an exact rerun, the original audit directory must therefore also provide:
+
+- `segmentos_elegibles_30d.csv`;
+- `auditoria_ventanas.csv`;
+- `resumen_presupuestos.csv`;
+- `errores.csv`;
+- `auditoria_flujo.json`;
+- the 421 frozen segment files recorded in `segment_files_hash_manifest`.
+
+The original development directory must also provide:
+
+- `estado_segmentos.csv`;
+- `sensibilidad_presupuesto.csv`;
+- `resumen_sensibilidad_presupuesto.csv`;
+- `errores.csv`.
+
+The recovered `manifiesto_ventanas_desarrollo.csv`, `metricas_segmento_longitud.csv`, and both summaries should remain with their original audit/development directories. The cleanest reproducibility package is therefore the complete frozen `auditoria_*` and `desarrollo_*` directories rather than a loose collection of individual files.
+
+Table A2 cannot yet be independently regenerated from the GitHub checkout alone until those complete frozen directories, or an equivalent archived bundle preserving their hashes and paths, are made available.
